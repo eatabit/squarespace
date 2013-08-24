@@ -1,7 +1,18 @@
 window.onload = function() {
 
   if (document.getElementsByClassName("homepage").length > 0){
-    assetsVersion = "v5"
+    assetsVersion = "v6";
+    imageAssetsRootURL = "http://assets.eatabit.com/" + assetsVersion + "/images/";
+
+    customerChatImages = ["customer_items.png", "customer_fulfillment.png", "customer_address.png", "customer_update.png", "customer_final.png"];
+    restaurantChatImages = ["restaurant_greeting.png", "restaurant_fulfillment.png", "restaurant_address.png", "restaurant_confirmation.png", "restaurant_update.png", "restaurant_final.png"];
+
+    imagesArray = customerChatImages.concat(restaurantChatImages);
+
+    for (var i = 0; i < imagesArray.length; i++) {
+      var img = new Image();
+      img.src = imageAssetsRootURL + imagesArray[i];
+    }
 
     element = document.getElementById("slideshow");
 
@@ -9,7 +20,7 @@ window.onload = function() {
     customerChatDiv.setAttribute("style", "height:100px;position:absolute;right:35%;top:40%;z-index:10001;")
 
     restaurantChatDiv = document.createElement("div");
-    restaurantChatDiv.setAttribute("style", "height:150px;position:absolute;left:20%;top:25%;z-index:10001;")
+    restaurantChatDiv.setAttribute("style", "height:100px;position:absolute;left:15%;top:25%;z-index:10001;")
 
     chatImgStyle = "opacity:0;position:absolute;bottom:0px;";
 
@@ -24,9 +35,6 @@ window.onload = function() {
 
     element.appendChild(customerChatDiv).appendChild(customerChatImg);
     element.appendChild(restaurantChatDiv).appendChild(restaurantChatImg);
-
-    customerChatImages = ["/images/customer_items.png", "/images/customer_fulfillment.png", "/images/customer_address.png", "/images/customer_update.png", "/images/customer_final.png"];
-    restaurantChatImages = ["/images/restaurant_greeting.png", "/images/restaurant_fulfillment.png", "/images/restaurant_address.png", "/images/restaurant_confirmation.png", "/images/restaurant_update.png", "/images/restaurant_final.png"];
 
     customerChatImagesIndex = 0;
     restaurantChatImagesIndex = 0;
@@ -55,7 +63,7 @@ window.onload = function() {
         if (restaurantChatImages.length >= (restaurantChatImagesIndex + 1)) {
           setTimeout(function() {
             restaurantChatImg.setAttribute("style", chatImgStyle);
-            restaurantChatImg.setAttribute("src", "http://assets.eatabit.com/" + assetsVersion + restaurantChatImages[restaurantChatImagesIndex]);
+            restaurantChatImg.setAttribute("src", "http://assets.eatabit.com/" + assetsVersion + "/images/" + restaurantChatImages[restaurantChatImagesIndex]);
             restaurantChatImagesIndex ++;
             restaurantChatY.run();
           }, timeoutDuration);
@@ -66,7 +74,7 @@ window.onload = function() {
         if (customerChatImages.length >= (customerChatImagesIndex + 1)) {
           setTimeout(function() {
             customerChatImg.setAttribute("style", chatImgStyle);
-            customerChatImg.setAttribute("src", "http://assets.eatabit.com/" + assetsVersion + customerChatImages[customerChatImagesIndex]);
+            customerChatImg.setAttribute("src", "http://assets.eatabit.com/" + assetsVersion + "/images/" + customerChatImages[customerChatImagesIndex]);
             customerChatImagesIndex ++;
             customerChatY.run();
           }, timeoutDuration);
