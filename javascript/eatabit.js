@@ -3,19 +3,19 @@ function chatAnimation() {
   if (document.getElementsByClassName("homepage").length > 0){
 
     customerChatImages = [
-      "http://assets.eatabit.com/v9/images/customer_items.png",
-      "http://assets.eatabit.com/v9/images/customer_fulfillment.png",
-      "http://assets.eatabit.com/v9/images/customer_address.png",
-      "http://assets.eatabit.com/v9/images/customer_update.png",
-      "http://assets.eatabit.com/v9/images/customer_final.png"
+      "http://assets.eatabit.com/v12/images/customer_items.png",
+      "http://assets.eatabit.com/v12/images/customer_fulfillment.png",
+      "http://assets.eatabit.com/v12/images/customer_address.png",
+      "http://assets.eatabit.com/v12/images/customer_update.png",
+      "http://assets.eatabit.com/v12/images/customer_final.png"
     ];
     restaurantChatImages = [
-      "http://assets.eatabit.com/v9/images/restaurant_greeting.png",
-      "http://assets.eatabit.com/v9/images/restaurant_fulfillment.png",
-      "http://assets.eatabit.com/v9/images/restaurant_address.png",
-      "http://assets.eatabit.com/v9/images/restaurant_confirmation.png",
-      "http://assets.eatabit.com/v9/images/restaurant_update.png",
-      "http://assets.eatabit.com/v9/images/restaurant_final.png"
+      "http://assets.eatabit.com/v12/images/restaurant_greeting.png",
+      "http://assets.eatabit.com/v12/images/restaurant_fulfillment.png",
+      "http://assets.eatabit.com/v12/images/restaurant_address.png",
+      "http://assets.eatabit.com/v12/images/restaurant_confirmation.png",
+      "http://assets.eatabit.com/v12/images/restaurant_update.png",
+      "http://assets.eatabit.com/v12/images/restaurant_final.png"
     ];
 
     imagesArray = customerChatImages.concat(restaurantChatImages);
@@ -28,16 +28,18 @@ function chatAnimation() {
 
     customerChatDiv = document.createElement("div");
     customerChatDiv.setAttribute("style", "height:100px;position:absolute;right:35%;top:40%;z-index:10001;")
+    customerChatDiv.setAttribute("class", "chatDiv");
 
     restaurantChatDiv = document.createElement("div");
     restaurantChatDiv.setAttribute("style", "height:100px;position:absolute;left:15%;top:25%;z-index:10001;")
+    restaurantChatDiv.setAttribute("class", "chatDiv");
 
     chatImgStyle = "opacity:0;position:absolute;bottom:0px;";
 
     customerChatImg = document.createElement("img");
     customerChatImg.setAttribute("id", "customerChatBubble");
     customerChatImg.setAttribute("style", chatImgStyle);
-    customerChatImg.setAttribute("src", "http://assets.eatabit.com/v9/images/customer_handle.png");
+    customerChatImg.setAttribute("src", "http://assets.eatabit.com/v12/images/customer_handle.png");
 
     restaurantChatImg = document.createElement("img");
     restaurantChatImg.setAttribute("id", "restaurantChatBubble");
