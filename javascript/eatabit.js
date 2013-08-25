@@ -1,20 +1,30 @@
-window.onload = function() {
+function chatAnimation() {
 
   if (document.getElementsByClassName("homepage").length > 0){
-    assetsVersion = "v6";
-    imageAssetsRootURL = "http://assets.eatabit.com/" + assetsVersion + "/images/";
 
-    customerChatImages = ["customer_items.png", "customer_fulfillment.png", "customer_address.png", "customer_update.png", "customer_final.png"];
-    restaurantChatImages = ["restaurant_greeting.png", "restaurant_fulfillment.png", "restaurant_address.png", "restaurant_confirmation.png", "restaurant_update.png", "restaurant_final.png"];
+    customerChatImages = [
+      "http://assets.eatabit.com/v9/images/customer_items.png",
+      "http://assets.eatabit.com/v9/images/customer_fulfillment.png",
+      "http://assets.eatabit.com/v9/images/customer_address.png",
+      "http://assets.eatabit.com/v9/images/customer_update.png",
+      "http://assets.eatabit.com/v9/images/customer_final.png"
+    ];
+    restaurantChatImages = [
+      "http://assets.eatabit.com/v9/images/restaurant_greeting.png",
+      "http://assets.eatabit.com/v9/images/restaurant_fulfillment.png",
+      "http://assets.eatabit.com/v9/images/restaurant_address.png",
+      "http://assets.eatabit.com/v9/images/restaurant_confirmation.png",
+      "http://assets.eatabit.com/v9/images/restaurant_update.png",
+      "http://assets.eatabit.com/v9/images/restaurant_final.png"
+    ];
 
     imagesArray = customerChatImages.concat(restaurantChatImages);
 
-    for (var i = 0; i < imagesArray.length; i++) {
-      var img = new Image();
-      img.src = imageAssetsRootURL + imagesArray[i];
-    }
+    YUI().use("gallery-preload", function(Y) {
+      Y.preload (imagesArray);
+    });
 
-    element = document.getElementById("slideshow");
+    element = document.getElementsByClassName("homepage")[0];
 
     customerChatDiv = document.createElement("div");
     customerChatDiv.setAttribute("style", "height:100px;position:absolute;right:35%;top:40%;z-index:10001;")
@@ -27,7 +37,7 @@ window.onload = function() {
     customerChatImg = document.createElement("img");
     customerChatImg.setAttribute("id", "customerChatBubble");
     customerChatImg.setAttribute("style", chatImgStyle);
-    customerChatImg.setAttribute("src", "http://assets.eatabit.com/" + assetsVersion + "/images/customer_handle.png");
+    customerChatImg.setAttribute("src", "http://assets.eatabit.com/v9/images/customer_handle.png");
 
     restaurantChatImg = document.createElement("img");
     restaurantChatImg.setAttribute("id", "restaurantChatBubble");
@@ -63,7 +73,7 @@ window.onload = function() {
         if (restaurantChatImages.length >= (restaurantChatImagesIndex + 1)) {
           setTimeout(function() {
             restaurantChatImg.setAttribute("style", chatImgStyle);
-            restaurantChatImg.setAttribute("src", "http://assets.eatabit.com/" + assetsVersion + "/images/" + restaurantChatImages[restaurantChatImagesIndex]);
+            restaurantChatImg.setAttribute("src", restaurantChatImages[restaurantChatImagesIndex]);
             restaurantChatImagesIndex ++;
             restaurantChatY.run();
           }, timeoutDuration);
@@ -74,7 +84,7 @@ window.onload = function() {
         if (customerChatImages.length >= (customerChatImagesIndex + 1)) {
           setTimeout(function() {
             customerChatImg.setAttribute("style", chatImgStyle);
-            customerChatImg.setAttribute("src", "http://assets.eatabit.com/" + assetsVersion + "/images/" + customerChatImages[customerChatImagesIndex]);
+            customerChatImg.setAttribute("src", customerChatImages[customerChatImagesIndex]);
             customerChatImagesIndex ++;
             customerChatY.run();
           }, timeoutDuration);
@@ -85,3 +95,5 @@ window.onload = function() {
     });
   };
 };
+
+chatAnimation.call();
